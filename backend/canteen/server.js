@@ -4,6 +4,14 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
 
+const express = require("express");
+
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
+
+module.exports = app;
+
 require('dotenv').config();
 const MONGODB_URI = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 3000;
