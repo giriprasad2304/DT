@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Canteen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Campus Canteen</div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#cool-drinks" class="header-items">Cool Drinks</a>
+                    <ul class="dropdown" id="cool-drinks-dropdown"></ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#snacks" class="header-items">Snacks</a>
+                    <ul class="dropdown" id="snacks-dropdown"></ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#bakery" class="header-items">Bakery</a>
+                    <ul class="dropdown" id="bakery-dropdown"></ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#rice" class="header-items">Rice Items</a>
+                    <ul class="dropdown" id="rice-dropdown"></ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#tiffins" class="header-items">Tiffins</a>
+                    <ul class="dropdown" id="tiffins-dropdown"></ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#beverages" class="header-items">Beverages</a>
+                    <ul class="dropdown" id="beverages-dropdown"></ul>
+                </li>
+                <li>
+                    <a href="/frontend/home/home.html" class="header-items">Back To Home</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Search Bar -->
+     <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for items..." />
+        <button id="search-button" onclick="searchItems()">Search</button>
+    </div>
+        <section id="hero">
+            <h1>Welcome to Campus Canteen</h1>
+            <p>Delicious food and beverages at your service</p>
+        </section>
+
+        <section id="cool-drinks" class="menu-section">
+            <h2>Cool Drinks</h2>
+            <div class="menu-grid" id="cool-drinks-grid"></div>
+        </section>
+
+        <section id="snacks" class="menu-section">
+            <h2>Snacks</h2>
+            <div class="menu-grid" id="snacks-grid"></div>
+        </section>
+
+        <section id="bakery" class="menu-section">
+            <h2>Bakery Items</h2>
+            <div class="menu-grid" id="bakery-grid"></div>
+        </section>
+
+        <section id="rice" class="menu-section">
+            <h2>Rice Items</h2>
+            <div class="menu-grid" id="rice-grid"></div>
+        </section>
+
+        <section id="tiffins" class="menu-section">
+            <h2>Tiffins</h2>
+            <div class="menu-grid" id="tiffins-grid"></div>
+        </section>
+
+        <section id="beverages" class="menu-section">
+            <h2>Beverages</h2>
+            <div class="menu-grid" id="beverages-grid"></div>
+        </section>
+
+        <section id="order" class="order_now">
+            <h2>To order You cake enter the below details  </h2>
+            <div class="order_cake">
+                <input id="name_oncake" type="text" placeholder="Enter Name to be print" class="input_online">
+                <input id="flavour" type="text" placeholder="enter flavour of your cake" class="input_online">
+                <input id="quantity" type="text" placeholder="quantity eg: 1kg , 1/2kg" class="input_online">
+                <button class="input_online input_button" onclick="ordercake()">Order</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Campus Canteen. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

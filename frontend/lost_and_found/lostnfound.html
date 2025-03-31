@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost & Found</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <style>
+        .floating-images {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .floating-images img {
+            position: absolute;
+            width: 100px;
+            height: auto;
+        }
+        .img-keys { top: 0%; left: 20%; }
+        .img-phones { top: 30%; left: 50%; }
+        .img-bags { top: 50%; left: 70%; }
+        .img-books { top: 70%; left: 30%; }
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Lost & Found</div>
+        <nav>
+            <a href="#" class="nav-item" data-section="home">Home</a>
+            <a href="#" class="nav-item" data-section="lost">Browse Lost Items</a>
+            <a href="#" class="nav-item" data-section="found">Browse Found Items</a>
+            <a href="/frontend/home/home.html" class="nav-item">Back To Main Page</a>
+            <a href="#" class="nav-item btn" data-modal="report-lost">Report Lost Item</a>
+            <a href="#" class="nav-item btn" data-modal="report-found">Report Found Item</a>
+        </nav>
+    </header>
+    <main>
+        <section id="home-section" class="section">
+            <h1>Have you Lost something?</h1>
+                <section><h1>Have you Found something?</h1></section>
+            <p>Our platform helps reunite lost items with their owners.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn" data-section="lost">Browse Lost Items</a>
+                <a href="#" class="btn" data-section="found">Browse Found Items</a>
+            </div>
+        </section>
+        <section id="lost-section" class="section" style="display: none;">
+            <div class="header">
+                <h1>Lost Items</h1>
+                <p>Browse reported lost items and help reunite them with their owners.</p>
+            </div>
+            <div class="filters">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="lost-search" placeholder="Search lost items...">
+                </div>
+                <div class="filter-options">
+                    <label>Category:</label>
+                    <select id="lost-category">
+                        <option value="all">All</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Bags">Bags</option>
+                    </select>
+                    <label>Date:</label>
+                    <select id="lost-date">
+                        <option value="all">All Time</option>
+                        <option value="24h">Last 24 Hours</option>
+                        <option value="week">Last Week</option>
+                        <option value="month">Last Month</option>
+                    </select>
+                </div>
+            </div>
+            <div class="items-grid"></div>
+        </section>
+        <section id="found-section" class="section" style="display: none;">
+            <div class="header">
+                <h1>Found Items</h1>
+                <p>Browse items found by others and claim what’s yours.</p>
+            </div>
+            <div class="filters">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="found-search" placeholder="Search found items...">
+                </div>
+                <div class="filter-options">
+                    <label>Category:</label>
+                    <select id="found-category">
+                        <option value="all">All</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Bags">Bags</option>
+                    </select>
+                    <label>Date:</label>
+                    <select id="found-date">
+                        <option value="all">All Time</option>
+                        <option value="24h">Last 24 Hours</option>
+                        <option value="week">Last Week</option>
+                        <option value="month">Last Month</option>
+                    </select>
+                </div>
+            </div>
+            <div class="items-grid"></div>
+        </section>
+    </main>
+    <div class="floating-images">
+        <img src="OIP" alt="Keys" class="img-keys">
+        <img src="images/phones.png" alt="Phones" class="img-phones">
+        <img src="images/bags.png" alt="Bags" class="img-bags">
+        <img src="images/books.png" alt="Books" class="img-books">
+    </div>
+    <div class="modal" id="report-lost-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Report Lost Item</h2>
+                <span class="close-btn">×</span>
+            </div>
+            <form id="lost-form">
+                <div class="form-group">
+                    <label for="lost-name">Item Name</label>
+                    <input type="text" id="lost-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lost-cat">Category</label>
+                    <select id="lost-cat" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Bags">Bags</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="lost-date-lost">Date Lost</label>
+                    <input type="date" id="lost-date-lost" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="lost-loc">Location</label>
+                    <input type="text" id="lost-loc" name="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="lost-desc">Description</label>
+                    <textarea id="lost-desc" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="lost-email">Contact Email</label>
+                    <input type="email" id="lost-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="lost-img">Image URL (Optional)</label>
+                    <input type="url" id="lost-img" name="image">
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="report-found-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Report Found Item</h2>
+                <span class="close-btn">×</span>
+            </div>
+            <form id="found-form">
+                <div class="form-group">
+                    <label for="found-name">Item Name</label>
+                    <input type="text" id="found-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="found-cat">Category</label>
+                    <select id="found-cat" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Bags">Bags</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="found-date-found">Date Found</label>
+                    <input type="date" id="found-date-found" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="found-loc">Location</label>
+                    <input type="text" id="found-loc" name="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="found-desc">Description</label>
+                    <textarea id="found-desc" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="found-email">Contact Email</label>
+                    <input type="email" id="found-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="found-img">Image URL (Optional)</label>
+                    <input type="url" id="found-img" name="image">
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

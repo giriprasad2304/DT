@@ -1,0 +1,431 @@
+/* Global Variables */
+:root {
+    --navy-blue: #001f3f;
+    --light-blue: #4A90E2;
+    --pale-blue: #E6F0FA;
+    --dark-text: #1A3C6D;
+}
+.filters {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: radial-gradient(circle, var(--light-blue), var(--navy-blue));
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styling */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    background: var(--navy-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo::before {
+    content: '🔍';
+    margin-right: 8px;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Navigation Styling */
+nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-item {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+.nav-item:nth-child(1) { animation-delay: 0.1s; }
+.nav-item:nth-child(2) { animation-delay: 0.2s; }
+.nav-item:nth-child(3) { animation-delay: 0.3s; }
+.nav-item:nth-child(4) { animation-delay: 0.4s; }
+.nav-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideIn {
+    from { transform: translateX(100vw); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.nav-item.btn {
+    background: var(--light-blue);
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section {
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+}
+
+/* Home Section */
+#home-section h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+#home-section p {
+    font-size: 18px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease-out forwards 0.2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    text-decoration: none;
+    animation: drop 0.5s ease-out forwards;
+}
+
+.hero-buttons .btn:nth-child(1) { animation-delay: 0.4s; }
+.hero-buttons .btn:nth-child(2) { animation-delay: 0.5s; }
+
+@keyframes drop {
+    from { transform: translateY(-100vh); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.hero-buttons .btn:first-child {
+    background: var(--pale-blue);
+    color: var(--dark-text);
+}
+
+.hero-buttons .btn:first-child:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-buttons .btn:last-child {
+    background: var(--light-blue);
+    color: #fff;
+}
+
+.hero-buttons .btn:last-child:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Lost and Found Sections */
+.header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.header p {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out forwards 0.2s;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.search-bar .search-icon {
+    color: #333;
+    margin-right: 5px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.filter-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-options label {
+    font-size: 14px;
+}
+
+.filter-options select {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Modal Styling */
+/* Modal Styling */
+.modal {
+    position: fixed !important; /* Ensure no overrides */
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; /* Center the modal */
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay for better contrast */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw !important; /* Full viewport width */
+    height: 100vh !important; /* Full viewport height */
+    z-index: 1000 !important; /* Ensure it appears above other elements */
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in effect */
+    overflow: auto; /* Allow scrolling if content overflows */
+}
+
+.modal[style*="display: block"] {
+    display: flex !important; /* Ensure it displays as flex when active */
+    opacity: 1;
+}
+
+.modal-content {
+    background: #fff;
+    color: #333;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 15px; /* Softer corners */
+    width: 450px; /* Slightly wider for better readability */
+    max-width: 90%; /* Responsive on smaller screens */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Smooth scaling effect */
+}
+
+.modal-content:hover {
+    transform: scale(1.02); /* Slight scale on hover for interactivity */
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-size: 28px; /* Slightly larger for emphasis */
+    font-weight: 700;
+    color: var(--dark-text); /* Use the dark text color from your variables */
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 28px;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: var(--light-blue); /* Highlight on hover */
+}
+
+/* Form Inputs */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px; /* More padding for comfort */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--light-blue); /* Highlight on focus */
+    outline: none;
+}
+
+/* Buttons */
+/* Buttons */
+.submit-btn,
+.cancel-btn {
+    padding: 14px 30px; /* Increased padding for larger buttons */
+    font-size: 16px; /* Larger font size for better readability */
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions */
+}
+
+.submit-btn {
+    background: var(--light-blue);
+    color: #fff;
+}
+
+.submit-btn:hover {
+    background: #3a7bc8; /* Slightly darker shade on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cancel-btn {
+    background: #ddd;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background: #ccc;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure the form-buttons container adjusts for larger buttons */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px; /* Slightly increased gap to accommodate larger buttons */
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .logo::before, .nav-item, h1, p, .btn, .submit-btn, .cancel-btn {
+        animation: none;
+    }
+    .btn:hover, .submit-btn:hover, .cancel-btn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+/* Items Grid */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjusted for larger cards */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Item Card */
+.item-card {
+    background: #080808; /* White background for the card */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    overflow: hidden; /* Ensure content doesn’t overflow the rounded corners */
+    transition: transform 0.2s ease; /* Smooth hover effect */
+}
+
+.item-card:hover {
+    transform: scale(1.03); /* Slight scale on hover for interactivity */
+}
+
+/* Item Image */
+.item-image {
+    width: 100%; /* Full width of the card */
+    height: 150px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    border-bottom: 1px solid #ddd; /* Separator between image and details */
+}
+
+/* Item Details */
+.item-details {
+    padding: 15px;
+    color: #333; /* Dark text for readability */
+}
+
+.item-details h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--dark-text); /* Use the dark text color from your variables */
+}
+
+.item-details p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.item-details p strong {
+    color: var(--navy-blue); /* Highlight labels with navy blue */
+}
+
+/* Fallback for missing images */
+.item-image[src=""] {
+    background: #eee; /* Fallback background color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+}
+.backhome{
+    margin-top: 150px;
+    text-align: center;
+    display: block;
+}
