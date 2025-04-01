@@ -1,6 +1,6 @@
 async function fetchMenuData() {
     try {
-        const response = await fetch('http://localhost:3000/menu');
+        const response = await fetch('https://dti-backend-i87z.onrender.com');
         const menuData = await response.json();
         return menuData;
     } catch (error) {
@@ -57,7 +57,7 @@ async function ordercake() {
     const quantity = document.getElementById('quantity').value;
 
     try {
-        const response = await fetch('http://localhost:3000/order', {
+        const response = await fetch('https://dti-backend-i87z.onrender.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
