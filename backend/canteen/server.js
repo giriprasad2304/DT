@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
 
-const express = require("express");
-
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
@@ -77,19 +75,23 @@ app.get('/menu', async (req, res) => {
 const orderSchema = new mongoose.Schema({
     consumer: String,
     flavour: String,
-    quantity: Number
+    quantity: Number,
+    phone: String,
+    info: String // Add info field to the schema
 });
 
 // Create the Order model
 const Order = mongoose.model('Order', orderSchema);
 
 app.post('/order', async (req, res) => {
-    const { consumer, flavour, quantity } = req.body;
+    const { consumer, flavour, quantity, phone, info } = req.body; // Destructure info from the request body
 
     const newOrder = new Order({
         consumer,
         flavour,
-        quantity
+        quantity,
+        phone,
+        info // Include info in the new order
     });
 
     try {
@@ -100,11 +102,13 @@ app.post('/order', async (req, res) => {
     }
 });
 
-const insertSampleOrder = async (consumer, flavour, quantity) => {
+const insertSampleOrder = async (consumer, flavour, quantity, phone, info) => {
     const sampleOrder = {
         consumer,
         flavour,
-        quantity
+        quantity,
+        phone,
+        info // Include info in the sample order
     };
 
     try {
