@@ -1,11 +1,11 @@
 function canteen()
 {
-    window.location.href = "/frontend/canteen/index.html";
+    window.location.href = "/canteen/index.html";
 }
 
 function lostandfound()
 {
-    window.location.href = "/frontend/lost_and_found/index.html";
+    window.location.href = "/lost_and_found/index.html";
 }
 
 function handleLogout() {
